@@ -1,0 +1,8 @@
+.sidebar {
+    width: 220px;
+    background-color: #f9f9f9;
+    border-right: 1px solid #ddd;
+    padding: 15px 0;
+    height: 100%;
+    overflow-y: auto;
+}

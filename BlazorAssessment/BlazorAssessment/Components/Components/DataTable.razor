@@ -1,0 +1,56 @@
+@inject BlazorAssessment.Services.ItemService ItemService
+@using BlazorAssessment.Models
+
+@if (items == null)
+{
+    <p>Loading...</p>
+}
+else if (!items.Any())
+{
+    <div class="empty-state">
+        <p><strong>No items found.</strong></p>
+        <p>Create a new item to start managing your data below</p>
+        <button class="btn btn-danger">Create Item</button>
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" /></th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email address</th>
+                    <th>Cellphone number</th>
+                    <th>Address</th>
+                    <th>Sales value</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in items)
+                {
+                    <tr>
+                        <td><input type="checkbox" /></td>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.EmailAddress</td>
+                        <td>@item.CellphoneNumber</td>
+                        <td>@item.Address</td>
+                        <td>@item.SalesValue.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private List<Item> items = new List<Item>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        items = await ItemService.GetItemsAsync();
+    }
+}
