@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Module.name</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 70px;
+    }
+    .sidebar {
+      background-color: #f9f9f9;
+      border-right: 1px solid #ddd;
+      padding: 15px 0;
+    }
+    .sidebar .nav > li > a {
+      padding: 10px 15px;
+    }
+    .top-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 60px 15px;
+    }
+    @media (max-width: 767px) {
+      #mobileSidebar {
+        position: fixed;
+        left: -250px;
+        top: 50px;
+        width: 200px;
+        height: 100%;
+        background: #f9f9f9;
+        border-right: 1px solid #ddd;
+        overflow-y: auto;
+        z-index: 1050;
+        transition: left 0.3s ease;
+      }
+      #mobileSidebar.open {
+        left: 0;
+      }
+      .main-content {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<nav class="navbar navbar-default navbar-fixed-top top-bar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" onclick="toggleSidebar()">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="navbar-brand"><strong>AVIS</strong> Module.name</span>
+    </div>
+    <div class="collapse navbar-collapse">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control input-sm" placeholder="Search for a page">
+        </div>
+        <button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-plus"></span> Quick Create</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Sidebar -->
+<div id="mobileSidebar" class="visible-xs sidebar">
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+    </ul>
+    <div class="form-group" style="padding: 15px;">
+      <label for="salesSelectMobile">Sales</label>
+      <select class="form-control input-sm" id="salesSelectMobile">
+        <option>Sales</option>
+      </select>
+    </div>
+  </div>
+  
+
+<!-- Page Layout -->
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Sidebar for Desktop -->
+<div class="col-sm-3 col-md-2 hidden-xs sidebar">
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+      <li><a href="#">Menu Item.Name</a></li>
+    </ul>
+    <div class="form-group" style="padding: 15px;">
+      <label for="salesSelect">Sales</label>
+      <select class="form-control input-sm" id="salesSelect">
+        <option>Sales</option>
+      </select>
+    </div>
+  </div>
+  
+
+    <!-- Main Content -->
+    <div class="col-xs-12 col-sm-9 col-md-10 main-content">
+      <div class="row" style="margin-bottom: 15px;">
+        <div class="col-xs-12">
+          <div class="btn-toolbar">
+            <button class="btn btn-default btn-sm">Save</button>
+            <button class="btn btn-default btn-sm">New</button>
+            <button class="btn btn-default btn-sm">Delete</button>
+            <button class="btn btn-default btn-sm">Deactivate</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <div class="pull-left">
+            <select class="form-control input-sm" style="width: auto; display: inline-block;">
+              <option>All Items</option>
+            </select>
+          </div>
+          <div class="pull-right">
+            <input type="text" class="form-control input-sm" placeholder="Search the data below" style="width: 200px;">
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th><input type="checkbox"></th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email address</th>
+                  <th>Cellphone number</th>
+                  <th>Address</th>
+                  <th>Sales value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="7">
+                    <div class="empty-state">
+                      <p><strong>No {{item.names}} found.</strong></p>
+                      <p>Create a new {{item.name}} to start managing your data below</p>
+                      <button class="btn btn-danger">Create {{item.name}}</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  function toggleSidebar() {
+    var sidebar = document.getElementById("mobileSidebar");
+    sidebar.classList.toggle("open");
+  }
+</script>
+
+</body>
+</html>
